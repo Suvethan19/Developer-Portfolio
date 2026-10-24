@@ -1,0 +1,1507 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Suvethan Yogathasan | Full-Stack Software Developer</title>
+  <meta name="description" content="Portfolio of Suvethan Yogathasan - Computer Science Graduate from Wilfrid Laurier University & Junior Full Stack Developer working with .NET Core, C#, Razor Pages, and SQL Server." />
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#f0f9ff',
+              400: '#38bdf8',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+            },
+            accent: {
+              teal: '#14b8a6',
+              purple: '#8b5cf6',
+              amber: '#f59e0b',
+              emerald: '#10b981',
+            },
+            surface: {
+              DEFAULT: '#090d16',
+              card: '#0f172a',
+              cardHover: '#131e36',
+              border: 'rgba(255, 255, 255, 0.08)',
+            }
+          },
+          animation: {
+            'gradient-pulse': 'gradientShift 14s ease infinite',
+            'float-slow': 'floatSlow 7s ease-in-out infinite',
+            'blink': 'blink 1.1s infinite',
+          },
+          keyframes: {
+            gradientShift: {
+              '0%, 100%': { transform: 'scale(1) translate(0px, 0px)' },
+              '50%': { transform: 'scale(1.15) translate(30px, -20px)' },
+            },
+            floatSlow: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-10px)' },
+            },
+            blink: {
+              '0%, 100%': { opacity: '1' },
+              '50%': { opacity: '0' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    /* Custom Styling for Glassmorphism & UI Accents */
+    body {
+      background-color: #060911;
+      color: #e2e8f0;
+      overflow-x: hidden;
+      selection-background-color: #0284c7;
+      selection-color: #ffffff;
+    }
+    ::selection {
+      background: #0284c7;
+      color: #ffffff;
+    }
+    .glass-panel {
+      background: rgba(15, 23, 42, 0.72);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+    }
+    .glass-card {
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .glass-card:hover {
+      background: rgba(19, 30, 54, 0.85);
+      border-color: rgba(56, 189, 248, 0.35);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.5), 0 0 20px -2px rgba(14, 165, 233, 0.15);
+    }
+    .code-chip {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+    }
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #060911;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #334155;
+    }
+  </style>
+</head>
+<body class="font-sans antialiased relative">
+
+  <!-- BACKGROUND GLOW ORBS -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div class="absolute -top-40 -left-40 w-96 h-96 bg-blue-600/15 rounded-full blur-3xl animate-gradient-pulse"></div>
+    <div class="absolute top-1/3 -right-40 w-[30rem] h-[30rem] bg-indigo-600/10 rounded-full blur-3xl animate-gradient-pulse" style="animation-delay: 4s;"></div>
+    <div class="absolute -bottom-40 left-1/3 w-[32rem] h-[32rem] bg-teal-600/10 rounded-full blur-3xl animate-gradient-pulse" style="animation-delay: 8s;"></div>
+    <!-- Fine dot matrix grid pattern -->
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#1f293708_1px,transparent_1px),linear-gradient(to_bottom,#1f293708_1px,transparent_1px)] bg-[size:32px_32px]"></div>
+  </div>
+
+  <!-- NAVIGATION BAR -->
+  <header class="sticky top-0 z-40 w-full glass-panel border-b border-white/5 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#hero" class="flex items-center space-x-3 group" onclick="soundEffect('click')">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-600 p-[1.5px] transition-transform duration-300 group-hover:scale-105 shadow-lg shadow-brand-500/20">
+          <div class="w-full h-full bg-surface-card rounded-[10px] flex items-center justify-center">
+            <span class="font-mono font-bold text-white text-base tracking-tighter">SY</span>
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-bold text-slate-100 text-sm tracking-tight group-hover:text-brand-400 transition-colors">Suvethan Yogathasan</span>
+          <span class="text-[11px] font-mono text-slate-400">Full-Stack .NET Developer</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden md:flex items-center space-x-1 lg:space-x-2 text-xs lg:text-sm font-medium text-slate-300">
+        <a href="#about" class="px-3 py-1.5 rounded-lg hover:text-white hover:bg-white/5 transition" onclick="soundEffect('click')">About</a>
+        <a href="#skills" class="px-3 py-1.5 rounded-lg hover:text-white hover:bg-white/5 transition" onclick="soundEffect('click')">Skills</a>
+        <a href="#experience" class="px-3 py-1.5 rounded-lg hover:text-white hover:bg-white/5 transition" onclick="soundEffect('click')">Experience</a>
+        <a href="#projects" class="px-3 py-1.5 rounded-lg hover:text-white hover:bg-white/5 transition" onclick="soundEffect('click')">Showcase</a>
+        <a href="#terminal" class="px-3 py-1.5 rounded-lg text-brand-400 hover:text-brand-300 hover:bg-brand-500/10 transition flex items-center gap-1.5 font-mono" onclick="soundEffect('click')">
+          <i class="fa-solid fa-terminal text-xs"></i> Terminal
+        </a>
+        <a href="#contact" class="px-3 py-1.5 rounded-lg hover:text-white hover:bg-white/5 transition" onclick="soundEffect('click')">Contact</a>
+      </nav>
+
+      <!-- Utilities (Sound, Quick Resume, Mobile Menu Toggle) -->
+      <div class="flex items-center space-x-2">
+        <!-- Sound Effect Toggle -->
+        <button id="soundToggleBtn" onclick="toggleSound()" class="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition" title="Toggle UI Sound Effects">
+          <i id="soundIcon" class="fa-solid fa-volume-high text-xs"></i>
+        </button>
+
+        <!-- Resume Modal Trigger -->
+        <button onclick="openModal('resumeModal')" class="hidden sm:inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-slate-200 text-xs font-semibold border border-white/10 hover:border-brand-500/40 transition">
+          <i class="fa-solid fa-file-pdf text-rose-400 text-xs"></i>
+          <span>Resume</span>
+        </button>
+
+        <!-- Direct Contact CTA -->
+        <a href="#contact" class="inline-flex items-center space-x-1.5 px-4 py-1.5 rounded-lg bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white text-xs font-semibold shadow-md shadow-brand-500/20 transition-all hover:shadow-brand-500/35" onclick="soundEffect('click')">
+          <span>Hire Me</span>
+          <i class="fa-solid fa-arrow-right text-[10px]"></i>
+        </a>
+
+        <!-- Mobile Menu Hamburger -->
+        <button onclick="toggleMobileNav()" class="md:hidden p-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition" aria-label="Toggle Navigation">
+          <i id="mobileMenuIcon" class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobileNavMenu" class="hidden md:hidden px-4 pt-2 pb-4 border-t border-white/5 bg-surface-card/95 backdrop-blur-xl">
+      <div class="flex flex-col space-y-2 text-sm font-medium">
+        <a href="#about" onclick="toggleMobileNav()" class="px-3 py-2 rounded-md hover:bg-white/5">About</a>
+        <a href="#skills" onclick="toggleMobileNav()" class="px-3 py-2 rounded-md hover:bg-white/5">Skills</a>
+        <a href="#experience" onclick="toggleMobileNav()" class="px-3 py-2 rounded-md hover:bg-white/5">Experience</a>
+        <a href="#projects" onclick="toggleMobileNav()" class="px-3 py-2 rounded-md hover:bg-white/5">Showcase</a>
+        <a href="#terminal" onclick="toggleMobileNav()" class="px-3 py-2 rounded-md text-brand-400 hover:bg-white/5 font-mono">Interactive Terminal</a>
+        <a href="#contact" onclick="toggleMobileNav()" class="px-3 py-2 rounded-md hover:bg-white/5">Contact</a>
+        <button onclick="openModal('resumeModal'); toggleMobileNav();" class="text-left px-3 py-2 rounded-md text-slate-300 hover:bg-white/5">
+          <i class="fa-solid fa-file-pdf text-rose-400 mr-2"></i> View Resume
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24 sm:space-y-32 pt-10 sm:pt-16 pb-20">
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="relative pt-6 sm:pt-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+        
+        <!-- Left: Headline & Bio Intro -->
+        <div class="lg:col-span-7 space-y-6">
+          
+          <!-- Availability Pill -->
+          <div class="inline-flex items-center space-x-2.5 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 text-xs font-medium">
+            <span class="flex h-2 w-2 relative">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            <span>Open to full-time Software Engineering roles</span>
+          </div>
+
+          <!-- Main Title -->
+          <div class="space-y-2">
+            <p class="text-sm sm:text-base font-mono text-brand-400 font-semibold tracking-wide">
+              &lt;developer name="Suvethan" /&gt;
+            </p>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight">
+              Crafting robust backends &amp; practical web systems.
+            </h1>
+          </div>
+
+          <!-- Dynamic Typewriter Subheading -->
+          <div class="h-8 flex items-center text-slate-300 font-mono text-sm sm:text-lg">
+            <span class="text-slate-500 mr-2">$</span>
+            <span id="typewriterText" class="text-brand-300 font-medium"></span>
+            <span class="w-2.5 h-5 bg-brand-400 ml-1 inline-block animate-blink"></span>
+          </div>
+
+          <!-- Concise Elevator Pitch -->
+          <p class="text-slate-400 text-sm sm:text-base leading-relaxed max-w-2xl">
+            Computer Science graduate from <strong class="text-slate-200">Wilfrid Laurier University</strong> and Junior Full Stack Developer at <strong class="text-slate-200">Voyzant Inc.</strong> I engineer high-throughput travel fare pipelines, reliable RESTful services, and clean web portals using <span class="text-brand-400 font-mono">.NET Core</span>, <span class="text-brand-400 font-mono">C#</span>, <span class="text-brand-400 font-mono">Razor Pages</span>, and <span class="text-brand-400 font-mono">SQL Server</span>.
+          </p>
+
+          <!-- CTAs -->
+          <div class="flex flex-wrap items-center gap-3 pt-2">
+            <a href="#experience" class="px-5 py-3 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-semibold text-xs sm:text-sm shadow-lg shadow-brand-600/30 transition-all flex items-center space-x-2" onclick="soundEffect('click')">
+              <i class="fa-solid fa-briefcase"></i>
+              <span>View Experience</span>
+            </a>
+
+            <a href="#terminal" class="px-5 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-slate-200 font-mono font-medium text-xs sm:text-sm border border-white/10 hover:border-brand-500/40 transition flex items-center space-x-2" onclick="soundEffect('click')">
+              <i class="fa-solid fa-terminal text-brand-400"></i>
+              <span>Interactive Shell</span>
+              <kbd class="hidden sm:inline-block ml-1 px-1.5 py-0.5 text-[10px] bg-slate-800 rounded border border-slate-700 text-slate-400">T</kbd>
+            </a>
+
+            <button onclick="openModal('resumeModal')" class="px-4 py-3 rounded-xl bg-slate-900/60 hover:bg-slate-800 text-slate-300 font-medium text-xs sm:text-sm border border-slate-800 transition flex items-center space-x-2">
+              <i class="fa-solid fa-file-lines text-slate-400"></i>
+              <span>Resume Details</span>
+            </button>
+          </div>
+
+          <!-- Social Quick Links -->
+          <div class="flex items-center space-x-4 pt-3 text-slate-400 text-sm">
+            <span class="text-xs uppercase tracking-wider text-slate-500 font-mono">Connect:</span>
+            <a href="https://linkedin.com/in/suvethan-yogathasan" target="_blank" rel="noopener noreferrer" class="hover:text-sky-400 transition-colors" title="LinkedIn Profile">
+              <i class="fa-brands fa-linkedin text-lg"></i>
+            </a>
+            <a href="mailto:suvethan2004@gmail.com" class="hover:text-rose-400 transition-colors" title="Direct Email">
+              <i class="fa-solid fa-envelope text-lg"></i>
+            </a>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors" title="GitHub">
+              <i class="fa-brands fa-github text-lg"></i>
+            </a>
+            <span class="text-xs font-mono text-slate-500 ml-2">Markham, ON (GTA)</span>
+          </div>
+
+        </div>
+
+        <!-- Right: Glass Metric Card & Live Code Snippet Display -->
+        <div class="lg:col-span-5 relative">
+          <div class="glass-panel p-6 rounded-2xl relative shadow-2xl space-y-5 border border-white/10">
+            
+            <!-- Window header dots -->
+            <div class="flex items-center justify-between border-b border-white/5 pb-3">
+              <div class="flex items-center space-x-2">
+                <span class="w-3 h-3 rounded-full bg-rose-500/80"></span>
+                <span class="w-3 h-3 rounded-full bg-amber-500/80"></span>
+                <span class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
+              </div>
+              <span class="code-chip text-slate-400 text-xs">SuvethanDevProfile.cs</span>
+              <span class="text-[10px] bg-brand-500/20 text-brand-300 px-2 py-0.5 rounded font-mono">.NET 8.0</span>
+            </div>
+
+            <!-- Code Preview Block -->
+            <div class="code-chip text-[12px] leading-relaxed text-slate-300 overflow-x-auto p-2 rounded-lg bg-black/40 border border-white/5">
+              <p><span class="text-purple-400">public class</span> <span class="text-amber-300">SoftwareEngineer</span></p>
+              <p>{</p>
+              <p class="pl-4"><span class="text-purple-400">public string</span> Name =&gt; <span class="text-emerald-300">"Suvethan Yogathasan"</span>;</p>
+              <p class="pl-4"><span class="text-purple-400">public string</span> Degree =&gt; <span class="text-emerald-300">"B.Sc. Computer Science @ Laurier"</span>;</p>
+              <p class="pl-4"><span class="text-purple-400">public string</span> CurrentRole =&gt; <span class="text-emerald-300">"Voyzant Inc. (.NET / SQL)"</span>;</p>
+              <p class="pl-4 text-slate-500">// Core capabilities:</p>
+              <p class="pl-4"><span class="text-purple-400">public string[]</span> PrimaryStack =&gt; <span class="text-purple-400">new</span>[] {</p>
+              <p class="pl-8"><span class="text-emerald-300">"C#"</span>, <span class="text-emerald-300">".NET Core"</span>, <span class="text-emerald-300">"SQL Server"</span>,</p>
+              <p class="pl-8"><span class="text-emerald-300">"Razor Pages"</span>, <span class="text-emerald-300">"REST APIs"</span></p>
+              <p class="pl-4">};</p>
+              <p>}</p>
+            </div>
+
+            <!-- Quantitative Stats Grid -->
+            <div class="grid grid-cols-2 gap-3 pt-1">
+              <div class="p-3 rounded-xl bg-white/5 border border-white/5">
+                <div class="text-2xl font-black text-white font-mono">2026</div>
+                <div class="text-[11px] text-slate-400 uppercase tracking-wider mt-0.5">Wilfrid Laurier CS Grad</div>
+              </div>
+              <div class="p-3 rounded-xl bg-white/5 border border-white/5">
+                <div class="text-2xl font-black text-brand-400 font-mono">3+</div>
+                <div class="text-[11px] text-slate-400 uppercase tracking-wider mt-0.5">Dev Terms &amp; Roles</div>
+              </div>
+              <div class="p-3 rounded-xl bg-white/5 border border-white/5">
+                <div class="text-2xl font-black text-emerald-400 font-mono">60+</div>
+                <div class="text-[11px] text-slate-400 uppercase tracking-wider mt-0.5">Students Mentored (TA)</div>
+              </div>
+              <div class="p-3 rounded-xl bg-white/5 border border-white/5">
+                <div class="text-2xl font-black text-amber-400 font-mono">100%</div>
+                <div class="text-[11px] text-slate-400 uppercase tracking-wider mt-0.5">Committed to Quality</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ABOUT ME & PHILOSOPHY -->
+    <section id="about" class="space-y-10 scroll-mt-24">
+      <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-white/10 pb-4 gap-2">
+        <div>
+          <span class="code-chip text-brand-400 tracking-wider uppercase font-semibold">01 // Background &amp; Mindset</span>
+          <h2 class="text-3xl font-extrabold text-white mt-1">About Me</h2>
+        </div>
+        <p class="text-xs text-slate-400 font-mono">Markham, Ontario • Remote / Hybrid / On-Site</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Story / Bio -->
+        <div class="lg:col-span-7 space-y-4 text-slate-300 text-sm sm:text-base leading-relaxed">
+          <p>
+            Hello! I’m Suvethan. I recently completed my <strong class="text-white">Bachelor of Science in Computer Science</strong> at <strong class="text-white">Wilfrid Laurier University</strong>. My computer science journey has centered on understanding how data moves reliably between clients, distributed backends, and databases.
+          </p>
+          <p>
+            In my current role as a <strong class="text-brand-300">Junior Full Stack Developer at Voyzant Inc.</strong>, I work directly with travel aggregators and Global Distribution Systems (GDS). I spend my days writing .NET Core backend services, structuring SQL Server stored procedures, and creating Razor Pages portals that help travel agents manage and price high volumes of flight inventory.
+          </p>
+          <p>
+            Before this, I mentored dozens of undergraduate students as an <strong class="text-white">Internet Computing Teaching Assistant</strong> at Laurier, and completed software engineering internships at <strong class="text-white">KuberMIC</strong>. I take pride in writing clear, well-tested code, understanding user needs, and solving real operational bottlenecks without needless fluff.
+          </p>
+        </div>
+
+        <!-- 3 Value / Working Principles Cards -->
+        <div class="lg:col-span-5 space-y-3">
+          <div class="glass-card p-4 rounded-xl flex items-start space-x-3.5">
+            <div class="w-9 h-9 rounded-lg bg-brand-500/10 text-brand-400 flex items-center justify-center shrink-0 text-sm">
+              <i class="fa-solid fa-code-commit"></i>
+            </div>
+            <div>
+              <h3 class="text-sm font-bold text-white">Pragmatic &amp; Clean Code</h3>
+              <p class="text-xs text-slate-400 mt-1">
+                Prioritizing maintainability, readability, and solid domain logic over convoluted patterns.
+              </p>
+            </div>
+          </div>
+
+          <div class="glass-card p-4 rounded-xl flex items-start space-x-3.5">
+            <div class="w-9 h-9 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0 text-sm">
+              <i class="fa-solid fa-database"></i>
+            </div>
+            <div>
+              <h3 class="text-sm font-bold text-white">Relational Integrity &amp; Speed</h3>
+              <p class="text-xs text-slate-400 mt-1">
+                Comfortable with SQL Server, stored procedures, indexing, and structuring schemas for high-frequency writes.
+              </p>
+            </div>
+          </div>
+
+          <div class="glass-card p-4 rounded-xl flex items-start space-x-3.5">
+            <div class="w-9 h-9 rounded-lg bg-purple-500/10 text-purple-400 flex items-center justify-center shrink-0 text-sm">
+              <i class="fa-solid fa-people-arrows"></i>
+            </div>
+            <div>
+              <h3 class="text-sm font-bold text-white">Collaborative &amp; Student-Minded</h3>
+              <p class="text-xs text-slate-400 mt-1">
+                Experience acting as a TA and working in constituency community teams taught me to listen, teach, and communicate clearly.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- INTERACTIVE SKILLS MATRIX -->
+    <section id="skills" class="space-y-8 scroll-mt-24">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between border-b border-white/10 pb-4 gap-4">
+        <div>
+          <span class="code-chip text-brand-400 tracking-wider uppercase font-semibold">02 // Capabilities</span>
+          <h2 class="text-3xl font-extrabold text-white mt-1">Technical Skills &amp; Stack</h2>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="flex flex-wrap gap-1.5 p-1 bg-surface-card rounded-xl border border-white/10 text-xs font-mono" id="skillFilterTabs">
+          <button onclick="filterSkillGroup('all')" class="skill-tab-btn px-3 py-1.5 rounded-lg bg-brand-600 text-white font-medium transition" data-target="all">All</button>
+          <button onclick="filterSkillGroup('backend')" class="skill-tab-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-white transition" data-target="backend">Backend &amp; Languages</button>
+          <button onclick="filterSkillGroup('frontend')" class="skill-tab-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-white transition" data-target="frontend">Frontend &amp; Web</button>
+          <button onclick="filterSkillGroup('data')" class="skill-tab-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-white transition" data-target="data">Databases &amp; Tools</button>
+          <button onclick="filterSkillGroup('cs')" class="skill-tab-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-white transition" data-target="cs">CS Foundations</button>
+        </div>
+      </div>
+
+      <!-- Skills Interactive Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4" id="skillsContainer">
+        
+        <!-- C# -->
+        <div class="glass-card p-4 rounded-xl space-y-2 cursor-pointer skill-item" data-group="backend" onclick="inspectSkill('C#', 'Primary language for enterprise microservices, object-oriented backends, LINQ, and asynchronous API controllers at Voyzant.')">
+          <div class="flex items-center justify-between">
+            <span class="font-bold text-sm text-white">C#</span>
+            <i class="fa-brands fa-microsoft text-brand-400 text-lg"></i>
+          </div>
+          <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+            <div class="bg-brand-500 h-full rounded-full" style="width: 92%"></div>
+          </div>
+          <p class="text-[11px] text-slate-400 font-mono">Enterprise Services</p>
+        </div>
+
+        <!-- .NET Core -->
+        <div class="glass-card p-4 rounded-xl space-y-2 cursor-pointer skill-item" data-group="backend" onclick="inspectSkill('.NET Core', 'Used to develop RESTful Web APIs, dependency injection architectures, unit tests, and travel data ingestion workers.')">
+          <div class="flex items-center justify-between">
+            <span class="font-bold text-sm text-white">.NET Core</span>
+            <i class="fa-solid fa-cube text-purple-400 text-lg"></i>
+          </div>
+          <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+            <div class="bg-purple-500 h-full rounded-full" style="width: 90%"></div>
+          </div>
+          <p class="text-[11px] text-slate-400 font-mono">Web APIs &amp; Services</p>
+        </div>
+
+        <!-- SQL Server -->
+        <div class="glass-card p-4 rounded-xl space-y-2 cursor-pointer skill-item" data-group="data" onclick="inspectSkill('SQL Server (SSMS)', 'Authoring complex stored procedures, multi-table joins, fare calculation schemas, transactions, and indexing.')">
+          <div class="flex items-center justify-between">
+            <span class="font-bold text-sm text-white">SQL Server (SSMS)</span>
+            <i class="fa-solid fa-database text-amber-400 text-lg"></i>
+          </div>
+          <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+            <div class="bg-amber-500 h-full rounded-full" style="width: 88%"></div>
+          </div>
+          <p class="text-[11px] text-slate-400 font-mono">Stored Procedures</p>
+        </div>
+
+        <!-- ASP.NET Razor Pages -->
+        <div class="glass-card p-4 rounded-xl space-y-2 cursor-pointer skill-item" data-group="frontend" onclick="inspectSkill('ASP.NET Razor Pages', 'Building server-rendered responsive agent portals, handling model bindings, and secure form processing.')">
+          <div class="flex items-center justify-between">
+            <span class="font-bold text-sm text-white">Razor Pages</span>
+            <i class="fa-solid fa-code text-sky-400 text-lg"></i>
+          </div>
+          <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+            <div class="bg-sky-500 h-full rounded-full" style="width: 86%"></div>
+          </div>
+          <p class="text-[11px] text-slate-400 font-mono">Agent Portal UIs</p>
+        </div>
+
+        <!-- JavaScript -->
+        <div class="glass-card p-4 rounded-xl space-y-2 cursor-pointer skill-item" data-group="frontend" onclick="inspectSkill('JavaScript (ES6+)', 'DOM manipulation, asynchronous fetch calls, event handling, taught students during Internet Computing TA labs.')">
+          <div class="flex items-center justify-between">
+            <span class="font-bold text-sm text-white">JavaScript (ES6+)</span>
+            <i class="fa-brands fa-js text-yellow-400 text-lg"></i>
+          </div>
+          <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+            <div class="bg-yellow-400 h-full rounded-full" style="width: 88%"></div>
+          </div>
+          <p class="text-[11px] text-slate-400 font-mono">Async &amp; Client Logic</p>
+        </div>
+
+        <!-- RESTful APIs -->
+        <div class="glass-card p-4 rounded-xl space-y-2 cursor-pointer skill-item" data-group="backend" onclick="inspectSkill('RESTful Web APIs', 'Designing clean HTTP contracts, status codes, route parameters, payload schemas, and integrating external GDS feeds.')">
+          <div class="flex items-center justify-between">
+            <span class="font-bold text-sm text-white">RESTful APIs</span>
+            <i class="fa-solid fa-network-wired text-teal-400 text-lg"></i>
+          </div>
+          <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+            <div class="bg-teal-400 h-full rounded-full" style="width: 90%"></div>
+          </div>
+          <p class="text-[11px] text-slate-400 font-mono">HTTP &amp; GDS Feeds</p>
+        </div>
+
+        <!-- Python -->
+        <div class="glass-card p-4 rounded-xl space-y-2 cursor-pointer skill-item" data-group="backend" onclick="inspectSkill('Python', 'Data manipulation, algorithmic problem solving, scripting, and coursework at Laurier.')">
+          <div class="flex items-center justify-between">
+            <span class="font-bold text-sm text-white">Python</span>
+            <i class="fa-brands fa-python text-emerald-400 text-lg"></i>
+          </div>
+          <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+            <div class="bg-emerald-500 h-full rounded-full" style="width: 82%"></div>
+          </div>
+          <p class="text-[11px] text-slate-400 font-mono">Scripting &amp; Algorithms</p>
+        </div>
+
+        <!-- Git & Version Control -->
+        <div class="glass-card p-4 rounded-xl space-y-2 cursor-pointer skill-item" data-group="data" onclick="inspectSkill('Git & GitHub', 'Feature branching, PR reviews, resolving merge conflicts, and team repository management.')">
+          <div class="flex items-center justify-between">
+            <span class="font-bold text-sm text-white">Git &amp; GitHub</span>
+            <i class="fa-brands fa-git-alt text-orange-500 text-lg"></i>
+          </div>
+          <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+            <div class="bg-orange-500 h-full rounded-full" style="width: 86%"></div>
+          </div>
+          <p class="text-[11px] text-slate-400 font-mono">Version Control &amp; PRs</p>
+        </div>
+
+        <!-- HTML5 & Modern CSS -->
+        <div class="glass-card p-4 rounded-xl space-y-2 cursor-pointer skill-item" data-group="frontend" onclick="inspectSkill('HTML5 & Modern CSS', 'Semantic markup, accessible responsive layouts, Tailwind utility patterns, and fluid design.')">
+          <div class="flex items-center justify-between">
+            <span class="font-bold text-sm text-white">HTML5 &amp; CSS3</span>
+            <i class="fa-brands fa-css3-alt text-blue-400 text-lg"></i>
+          </div>
+          <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+            <div class="bg-blue-400 h-full rounded-full" style="width: 90%"></div>
+          </div>
+          <p class="text-[11px] text-slate-400 font-mono">Responsive Web</p>
+        </div>
+
+        <!-- Data Structures & Algorithms -->
+        <div class="glass-card p-4 rounded-xl space-y-2 cursor-pointer skill-item" data-group="cs" onclick="inspectSkill('Data Structures & Algorithms', 'Trees, graphs, hashtables, searching/sorting algorithms, and asymptotic time/space complexity analysis.')">
+          <div class="flex items-center justify-between">
+            <span class="font-bold text-sm text-white">Algorithms &amp; DS</span>
+            <i class="fa-solid fa-diagram-project text-indigo-400 text-lg"></i>
+          </div>
+          <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+            <div class="bg-indigo-400 h-full rounded-full" style="width: 85%"></div>
+          </div>
+          <p class="text-[11px] text-slate-400 font-mono">Complexity &amp; Logic</p>
+        </div>
+
+        <!-- Internet Computing (Client-Server) -->
+        <div class="glass-card p-4 rounded-xl space-y-2 cursor-pointer skill-item" data-group="cs" onclick="inspectSkill('Internet Computing', 'Client-server paradigms, HTTP request-response cycle, cookies/sessions, TCP/IP basics, and web security.')">
+          <div class="flex items-center justify-between">
+            <span class="font-bold text-sm text-white">Internet Computing</span>
+            <i class="fa-solid fa-globe text-cyan-400 text-lg"></i>
+          </div>
+          <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+            <div class="bg-cyan-400 h-full rounded-full" style="width: 88%"></div>
+          </div>
+          <p class="text-[11px] text-slate-400 font-mono">Client-Server &amp; Web</p>
+        </div>
+
+        <!-- Testing & Agile -->
+        <div class="glass-card p-4 rounded-xl space-y-2 cursor-pointer skill-item" data-group="data" onclick="inspectSkill('Testing & Agile Process', 'Writing unit & integration tests, diagnosing production booking errors, participating in Scrum sprints.')">
+          <div class="flex items-center justify-between">
+            <span class="font-bold text-sm text-white">Testing &amp; Agile</span>
+            <i class="fa-solid fa-vial-circle-check text-rose-400 text-lg"></i>
+          </div>
+          <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+            <div class="bg-rose-400 h-full rounded-full" style="width: 84%"></div>
+          </div>
+          <p class="text-[11px] text-slate-400 font-mono">Quality &amp; Scrum</p>
+        </div>
+
+      </div>
+
+      <!-- Live Skill Inspector Box -->
+      <div id="skillInspector" class="p-4 rounded-xl glass-panel border border-brand-500/30 flex items-start space-x-3 transition-all duration-300">
+        <div class="w-8 h-8 rounded-lg bg-brand-500/20 text-brand-400 flex items-center justify-center shrink-0 text-sm font-mono">
+          &gt;_
+        </div>
+        <div>
+          <h4 id="inspectorTitle" class="text-xs font-mono font-bold text-brand-300 uppercase tracking-wider">Skill Inspector</h4>
+          <p id="inspectorBody" class="text-xs sm:text-sm text-slate-300 mt-0.5">
+            Click any skill card above to inspect how I apply it in real-world software development.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE TIMELINE -->
+    <section id="experience" class="space-y-10 scroll-mt-24">
+      <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-white/10 pb-4 gap-2">
+        <div>
+          <span class="code-chip text-brand-400 tracking-wider uppercase font-semibold">03 // Track Record</span>
+          <h2 class="text-3xl font-extrabold text-white mt-1">Work Experience</h2>
+        </div>
+        <p class="text-xs text-slate-400 font-mono">Production Systems &amp; Technical Mentorship</p>
+      </div>
+
+      <!-- Timeline Wrapper -->
+      <div class="relative pl-6 sm:pl-8 space-y-8 before:absolute before:left-2.5 sm:before:left-3 before:top-2 before:bottom-2 before:w-[2px] before:bg-gradient-to-b before:from-brand-500 before:via-indigo-500 before:to-slate-800">
+
+        <!-- 1. Voyzant Inc. -->
+        <div class="relative group">
+          <!-- Timeline Indicator Node -->
+          <div class="absolute -left-[30px] sm:-left-[34px] top-1.5 w-4 h-4 rounded-full bg-surface-card border-2 border-brand-400 shadow-lg shadow-brand-500/50 flex items-center justify-center">
+            <div class="w-1.5 h-1.5 rounded-full bg-brand-400 animate-ping"></div>
+          </div>
+
+          <div class="glass-card p-6 rounded-2xl space-y-3 border-l-2 border-l-brand-400">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+              <div>
+                <h3 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
+                  <span>Junior Full Stack Software Developer</span>
+                  <span class="text-xs font-mono px-2 py-0.5 rounded bg-brand-500/20 text-brand-300">Current</span>
+                </h3>
+                <p class="text-sm font-medium text-brand-400">Voyzant Inc. &bull; Markham, ON</p>
+              </div>
+              <span class="text-xs font-mono text-slate-400">October 2026 – Present</span>
+            </div>
+
+            <ul class="text-xs sm:text-sm text-slate-300 space-y-2 list-disc pl-4 leading-relaxed">
+              <li>Delivering full-stack web solutions using <strong class="text-white">C#</strong> and <strong class="text-white">ASP.NET Core Razor Pages</strong> to construct responsive internal portals for travel agents to search, compare, and manage travel inventory.</li>
+              <li>Building scalable backend microservices and RESTful APIs in <strong class="text-white">.NET Core</strong>, integrating external data feeds from Global Distribution Systems (GDS) and airline aggregators.</li>
+              <li>Implementing relational database schemas, tables, and stored procedures in <strong class="text-white">SQL Server (SSMS)</strong> to automate dynamic fare rules, multi-tier pricing, markups, and commission logic.</li>
+              <li>Investigating and diagnosing production booking exceptions, writing unit and integration tests, and collaborating in daily Scrum standups and peer code reviews.</li>
+            </ul>
+
+            <div class="flex flex-wrap gap-1.5 pt-2">
+              <span class="code-chip px-2.5 py-0.5 rounded bg-white/5 text-slate-300">C#</span>
+              <span class="code-chip px-2.5 py-0.5 rounded bg-white/5 text-slate-300">.NET Core</span>
+              <span class="code-chip px-2.5 py-0.5 rounded bg-white/5 text-slate-300">Razor Pages</span>
+              <span class="code-chip px-2.5 py-0.5 rounded bg-white/5 text-slate-300">SQL Server (SSMS)</span>
+              <span class="code-chip px-2.5 py-0.5 rounded bg-white/5 text-slate-300">REST APIs</span>
+              <span class="code-chip px-2.5 py-0.5 rounded bg-white/5 text-slate-300">GDS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Wilfrid Laurier University (TA) -->
+        <div class="relative group">
+          <div class="absolute -left-[30px] sm:-left-[34px] top-1.5 w-4 h-4 rounded-full bg-surface-card border-2 border-indigo-400 shadow-md flex items-center justify-center">
+            <div class="w-1.5 h-1.5 rounded-full bg-indigo-400"></div>
+          </div>
+
+          <div class="glass-card p-6 rounded-2xl space-y-3">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+              <div>
+                <h3 class="text-base sm:text-lg font-bold text-white">Teaching Assistant — Internet Computing</h3>
+                <p class="text-sm font-medium text-indigo-400">Wilfrid Laurier University &bull; Waterloo, ON</p>
+              </div>
+              <span class="text-xs font-mono text-slate-400">May 2026 – August 2026</span>
+            </div>
+
+            <ul class="text-xs sm:text-sm text-slate-300 space-y-2 list-disc pl-4 leading-relaxed">
+              <li>Evaluated and graded student assignments, lab submissions, and exams in accordance with academic standards and rigorous course rubrics.</li>
+              <li>Assisted over 60 undergraduate students with questions covering client-server networking, HTML, CSS, JavaScript, DOM methods, and asynchronous requests.</li>
+              <li>Reviewed student code to identify bugs, explain error logs, and guide students toward clean code patterns and proper debugging techniques.</li>
+              <li>Supported the lead course instructor with administrative course organization and timely grading turnarounds.</li>
+            </ul>
+
+            <div class="flex flex-wrap gap-1.5 pt-2">
+              <span class="code-chip px-2.5 py-0.5 rounded bg-white/5 text-slate-300">JavaScript</span>
+              <span class="code-chip px-2.5 py-0.5 rounded bg-white/5 text-slate-300">Client-Server</span>
+              <span class="code-chip px-2.5 py-0.5 rounded bg-white/5 text-slate-300">HTTP Protocol</span>
+              <span class="code-chip px-2.5 py-0.5 rounded bg-white/5 text-slate-300">Code Reviews</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. KuberMIC -->
+        <div class="relative group">
+          <div class="absolute -left-[30px] sm:-left-[34px] top-1.5 w-4 h-4 rounded-full bg-surface-card border-2 border-slate-400 shadow-md flex items-center justify-center">
+            <div class="w-1.5 h-1.5 rounded-full bg-slate-400"></div>
+          </div>
+
+          <div class="glass-card p-6 rounded-2xl space-y-3">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+              <div>
+                <h3 class="text-base sm:text-lg font-bold text-white">Software Development Intern</h3>
+                <p class="text-sm font-medium text-slate-300">KuberMIC &bull; Scarborough, ON</p>
+              </div>
+              <span class="text-xs font-mono text-slate-400">May 2023 – Aug 2023 &bull; July 2022 – Aug 2022</span>
+            </div>
+
+            <ul class="text-xs sm:text-sm text-slate-300 space-y-2 list-disc pl-4 leading-relaxed">
+              <li>Designed responsive, user-friendly web pages aligned with business goals and brand guidelines.</li>
+              <li>Wrote and maintained backend code to validate, store, and sanitize form and application data securely.</li>
+              <li>Debugged and optimized existing queries and codebases, improving page load speeds and overall runtime stability.</li>
+              <li>Collaborated with senior engineers to implement technical specifications, test updates, and push smooth staging releases.</li>
+            </ul>
+
+            <div class="flex flex-wrap gap-1.5 pt-2">
+              <span class="code-chip px-2.5 py-0.5 rounded bg-white/5 text-slate-300">Web Development</span>
+              <span class="code-chip px-2.5 py-0.5 rounded bg-white/5 text-slate-300">Backend Logic</span>
+              <span class="code-chip px-2.5 py-0.5 rounded bg-white/5 text-slate-300">Debugging</span>
+              <span class="code-chip px-2.5 py-0.5 rounded bg-white/5 text-slate-300">Agile</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Community & Civic Engagement -->
+        <div class="relative group">
+          <div class="absolute -left-[30px] sm:-left-[34px] top-1.5 w-4 h-4 rounded-full bg-surface-card border-2 border-teal-400 shadow-md flex items-center justify-center">
+            <div class="w-1.5 h-1.5 rounded-full bg-teal-400"></div>
+          </div>
+
+          <div class="glass-card p-6 rounded-2xl space-y-3">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+              <div>
+                <h3 class="text-base sm:text-lg font-bold text-white">Constituency Assistant &amp; Community Volunteer</h3>
+                <p class="text-sm font-medium text-teal-400">MP Gary Anandasangaree Office &amp; Campaign &bull; Scarborough, ON</p>
+              </div>
+              <span class="text-xs font-mono text-slate-400">2018 – 2025</span>
+            </div>
+
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              Acted as a primary point of contact for constituents navigating federal programs, organized record-keeping systems, assisted with casework reports, and coordinated public events. Developed strong communication and team organization skills under fast-paced public scrutiny.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FEATURED ARCHITECTURE & SHOWCASE CONCEPTS -->
+    <section id="projects" class="space-y-10 scroll-mt-24">
+      <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-white/10 pb-4 gap-2">
+        <div>
+          <span class="code-chip text-brand-400 tracking-wider uppercase font-semibold">04 // Engineering Highlights</span>
+          <h2 class="text-3xl font-extrabold text-white mt-1">Featured Systems &amp; Concepts</h2>
+        </div>
+        <p class="text-xs text-slate-400 font-mono">Architecture Demos &amp; Implementations</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Card 1: Travel Fare Pipeline -->
+        <div class="glass-card rounded-2xl p-6 flex flex-col justify-between space-y-4">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between text-xs font-mono">
+              <span class="text-brand-400 bg-brand-500/10 px-2 py-0.5 rounded border border-brand-500/20">Backend Service</span>
+              <span class="text-slate-500">.NET Core / SQL</span>
+            </div>
+            <h3 class="text-lg font-bold text-white group-hover:text-brand-400 transition-colors">
+              Travel Fare Ingestion &amp; Calculation Engine
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              High-throughput pipeline architecture designed to ingest airline GDS feeds, normalize disparate XML/JSON fare payloads, and run stored procedures to apply dynamic multi-tier commissions.
+            </p>
+          </div>
+
+          <div class="space-y-4 pt-2">
+            <div class="flex flex-wrap gap-1 text-[11px] font-mono text-slate-400">
+              <span class="px-2 py-0.5 bg-white/5 rounded">C#</span>
+              <span class="px-2 py-0.5 bg-white/5 rounded">SQL Server</span>
+              <span class="px-2 py-0.5 bg-white/5 rounded">REST API</span>
+              <span class="px-2 py-0.5 bg-white/5 rounded">Stored Proc</span>
+            </div>
+            <button onclick="openProjectModal('fareEngine')" class="w-full py-2 bg-white/5 hover:bg-white/10 text-brand-300 hover:text-white rounded-xl text-xs font-semibold border border-white/10 transition flex items-center justify-center space-x-2">
+              <i class="fa-solid fa-layer-group"></i>
+              <span>View System Architecture</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 2: Internet Computing Lab Hub -->
+        <div class="glass-card rounded-2xl p-6 flex flex-col justify-between space-y-4">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between text-xs font-mono">
+              <span class="text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">Education Sandbox</span>
+              <span class="text-slate-500">Laurier CP Lab</span>
+            </div>
+            <h3 class="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors">
+              Interactive HTTP &amp; DOM Lab Playground
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              Sandbox tooling created to explain client-server network interactions, asynchronous promise resolution, and real-time DOM updates to undergraduate students during TA office hours.
+            </p>
+          </div>
+
+          <div class="space-y-4 pt-2">
+            <div class="flex flex-wrap gap-1 text-[11px] font-mono text-slate-400">
+              <span class="px-2 py-0.5 bg-white/5 rounded">JavaScript ES6</span>
+              <span class="px-2 py-0.5 bg-white/5 rounded">DOM API</span>
+              <span class="px-2 py-0.5 bg-white/5 rounded">HTTP Verbs</span>
+              <span class="px-2 py-0.5 bg-white/5 rounded">Async/Await</span>
+            </div>
+            <button onclick="openProjectModal('labHub')" class="w-full py-2 bg-white/5 hover:bg-white/10 text-emerald-300 hover:text-white rounded-xl text-xs font-semibold border border-white/10 transition flex items-center justify-center space-x-2">
+              <i class="fa-solid fa-network-wired"></i>
+              <span>Inspect Concepts</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 3: Agent Portal Razor Pages Demo -->
+        <div class="glass-card rounded-2xl p-6 flex flex-col justify-between space-y-4">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between text-xs font-mono">
+              <span class="text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded border border-purple-500/20">Web Portal</span>
+              <span class="text-slate-500">ASP.NET Core</span>
+            </div>
+            <h3 class="text-lg font-bold text-white group-hover:text-purple-400 transition-colors">
+              B2B Travel Agent Booking Desk
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              Clean portal pattern featuring server-side rendered Razor Pages, fast multi-attribute filtering, secure ticket issue workflows, and responsive agent management dashboards.
+            </p>
+          </div>
+
+          <div class="space-y-4 pt-2">
+            <div class="flex flex-wrap gap-1 text-[11px] font-mono text-slate-400">
+              <span class="px-2 py-0.5 bg-white/5 rounded">Razor Pages</span>
+              <span class="px-2 py-0.5 bg-white/5 rounded">C#</span>
+              <span class="px-2 py-0.5 bg-white/5 rounded">Form Security</span>
+              <span class="px-2 py-0.5 bg-white/5 rounded">UI/UX</span>
+            </div>
+            <button onclick="openProjectModal('agentDesk')" class="w-full py-2 bg-white/5 hover:bg-white/10 text-purple-300 hover:text-white rounded-xl text-xs font-semibold border border-white/10 transition flex items-center justify-center space-x-2">
+              <i class="fa-solid fa-desktop"></i>
+              <span>View Portal Details</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- INTERACTIVE LIVE TERMINAL -->
+    <section id="terminal" class="space-y-6 scroll-mt-24">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between border-b border-white/10 pb-4 gap-2">
+        <div>
+          <span class="code-chip text-brand-400 tracking-wider uppercase font-semibold">05 // Interactive Terminal</span>
+          <h2 class="text-3xl font-extrabold text-white mt-1">Developer Shell</h2>
+        </div>
+        <div class="flex items-center space-x-2 text-xs font-mono text-slate-400">
+          <span>Type <span class="text-brand-400 font-bold">help</span> to begin</span>
+          <span class="text-slate-600">&bull;</span>
+          <span>Press <kbd class="px-1.5 py-0.5 bg-surface-card rounded border border-white/10">T</kbd> to jump</span>
+        </div>
+      </div>
+
+      <!-- Terminal Window Component -->
+      <div class="rounded-2xl glass-panel border border-white/10 shadow-2xl overflow-hidden font-mono text-xs sm:text-sm">
+        
+        <!-- Terminal Header Bar -->
+        <div class="bg-surface-card px-4 py-3 flex items-center justify-between border-b border-white/5">
+          <div class="flex items-center space-x-2">
+            <span class="w-3 h-3 rounded-full bg-rose-500 inline-block"></span>
+            <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
+            <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
+            <span class="text-slate-400 text-xs ml-2">suvethan@macbook-pro:~ (zsh)</span>
+          </div>
+          <div class="flex items-center space-x-2">
+            <button onclick="clearTerminal()" class="text-slate-400 hover:text-white text-xs px-2 py-0.5 rounded hover:bg-white/5" title="Clear console">
+              <i class="fa-solid fa-eraser"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Terminal Output Area -->
+        <div id="terminalOutput" class="p-4 sm:p-6 space-y-3 min-h-[300px] max-h-[440px] overflow-y-auto bg-black/60 text-slate-200">
+          <div>
+            <p class="text-emerald-400 font-semibold">SuvethanOS v2.4.0 (x86_64-apple-darwin)</p>
+            <p class="text-slate-400 text-xs mt-1">Type <span class="text-brand-300">help</span> to view available commands or click the chips below.</p>
+          </div>
+        </div>
+
+        <!-- Terminal Quick Action Chips -->
+        <div class="px-4 py-2 bg-surface-card/60 border-t border-white/5 flex flex-wrap gap-1.5 text-[11px]">
+          <span class="text-slate-500 self-center mr-1">Quick Run:</span>
+          <button onclick="runCommand('help')" class="px-2.5 py-1 rounded-md bg-white/5 hover:bg-brand-500/20 hover:text-brand-300 text-slate-300 border border-white/5 transition">help</button>
+          <button onclick="runCommand('about')" class="px-2.5 py-1 rounded-md bg-white/5 hover:bg-brand-500/20 hover:text-brand-300 text-slate-300 border border-white/5 transition">about</button>
+          <button onclick="runCommand('skills')" class="px-2.5 py-1 rounded-md bg-white/5 hover:bg-brand-500/20 hover:text-brand-300 text-slate-300 border border-white/5 transition">skills</button>
+          <button onclick="runCommand('cat resume.txt')" class="px-2.5 py-1 rounded-md bg-white/5 hover:bg-brand-500/20 hover:text-brand-300 text-slate-300 border border-white/5 transition">cat resume.txt</button>
+          <button onclick="runCommand('sudo hire')" class="px-2.5 py-1 rounded-md bg-white/5 hover:bg-brand-500/20 hover:text-brand-300 text-slate-300 border border-white/5 transition">sudo hire</button>
+          <button onclick="runCommand('clear')" class="px-2.5 py-1 rounded-md bg-white/5 hover:bg-rose-500/20 hover:text-rose-300 text-slate-400 border border-white/5 transition">clear</button>
+        </div>
+
+        <!-- Terminal Prompt Input -->
+        <div class="px-4 py-3 bg-surface-card flex items-center space-x-2 border-t border-white/5">
+          <span class="text-brand-400 font-bold">$</span>
+          <input type="text" id="terminalInput" autocomplete="off" spellcheck="false" placeholder="Type command here..." class="w-full bg-transparent outline-none text-slate-100 font-mono text-xs sm:text-sm placeholder:text-slate-600" />
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="space-y-10 scroll-mt-24">
+      <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-white/10 pb-4 gap-2">
+        <div>
+          <span class="code-chip text-brand-400 tracking-wider uppercase font-semibold">06 // Communication</span>
+          <h2 class="text-3xl font-extrabold text-white mt-1">Get In Touch</h2>
+        </div>
+        <p class="text-xs text-slate-400 font-mono">Let’s discuss engineering roles &amp; projects</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <!-- Left: Quick Direct Reach & Details -->
+        <div class="lg:col-span-5 space-y-4">
+          <div class="glass-card p-6 rounded-2xl space-y-4">
+            <h3 class="text-lg font-bold text-white">Direct Channels</h3>
+            <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+              I am actively interested in Junior / Intermediate Full-Stack, Backend (.NET / C#), and Software Engineering opportunities across the Greater Toronto Area or remote.
+            </p>
+
+            <div class="space-y-3 pt-2 text-xs sm:text-sm font-mono">
+              
+              <!-- Email Card -->
+              <div class="p-3 rounded-xl bg-white/5 border border-white/5 flex items-center justify-between">
+                <div class="flex items-center space-x-3 truncate">
+                  <i class="fa-solid fa-envelope text-brand-400 text-base"></i>
+                  <span class="text-slate-200 truncate">suvethan2004@gmail.com</span>
+                </div>
+                <button onclick="copyToClipboard('suvethan2004@gmail.com', 'Email copied to clipboard!')" class="text-slate-400 hover:text-white p-1 ml-2 transition" title="Copy Email">
+                  <i class="fa-regular fa-copy"></i>
+                </button>
+              </div>
+
+              <!-- Phone Card -->
+              <div class="p-3 rounded-xl bg-white/5 border border-white/5 flex items-center justify-between">
+                <div class="flex items-center space-x-3 truncate">
+                  <i class="fa-solid fa-phone text-emerald-400 text-base"></i>
+                  <span class="text-slate-200 truncate">+1 (647) 679-0144</span>
+                </div>
+                <button onclick="copyToClipboard('+16476790144', 'Phone number copied!')" class="text-slate-400 hover:text-white p-1 ml-2 transition" title="Copy Phone">
+                  <i class="fa-regular fa-copy"></i>
+                </button>
+              </div>
+
+              <!-- Location Card -->
+              <div class="p-3 rounded-xl bg-white/5 border border-white/5 flex items-center space-x-3">
+                <i class="fa-solid fa-location-dot text-rose-400 text-base"></i>
+                <span class="text-slate-200">Markham, Ontario, Canada</span>
+              </div>
+
+            </div>
+
+            <!-- Social Links -->
+            <div class="pt-4 flex items-center space-x-3">
+              <a href="https://linkedin.com/in/suvethan-yogathasan" target="_blank" rel="noopener noreferrer" class="flex-1 py-2.5 rounded-xl bg-sky-600/20 hover:bg-sky-600/30 text-sky-300 border border-sky-500/30 text-xs font-semibold flex items-center justify-center space-x-2 transition">
+                <i class="fa-brands fa-linkedin text-sm"></i>
+                <span>LinkedIn</span>
+              </a>
+              <a href="mailto:suvethan2004@gmail.com" class="flex-1 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white text-xs font-semibold flex items-center justify-center space-x-2 transition shadow-md shadow-brand-500/20">
+                <i class="fa-solid fa-paper-plane text-sm"></i>
+                <span>Send Email</span>
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Right: Interactive Contact Form -->
+        <div class="lg:col-span-7">
+          <div class="glass-card p-6 sm:p-8 rounded-2xl space-y-4">
+            <h3 class="text-lg font-bold text-white">Send a Direct Message</h3>
+            <p class="text-xs text-slate-400">Fill in the fields below. A client-side simulator logs the message and opens your email client with one tap.</p>
+
+            <form id="contactForm" onsubmit="handleContactSubmit(event)" class="space-y-4 pt-2 text-xs sm:text-sm">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block font-medium text-slate-300 mb-1">Your Name</label>
+                  <input type="text" id="formName" required placeholder="Jane Doe" class="w-full px-3.5 py-2.5 rounded-xl bg-surface-card border border-white/10 focus:border-brand-400 outline-none text-white transition placeholder:text-slate-600" />
+                </div>
+                <div>
+                  <label class="block font-medium text-slate-300 mb-1">Your Email</label>
+                  <input type="email" id="formEmail" required placeholder="jane@company.com" class="w-full px-3.5 py-2.5 rounded-xl bg-surface-card border border-white/10 focus:border-brand-400 outline-none text-white transition placeholder:text-slate-600" />
+                </div>
+              </div>
+
+              <div>
+                <label class="block font-medium text-slate-300 mb-1">Subject</label>
+                <input type="text" id="formSubject" required placeholder="Software Engineering Role / Project Inquiry" class="w-full px-3.5 py-2.5 rounded-xl bg-surface-card border border-white/10 focus:border-brand-400 outline-none text-white transition placeholder:text-slate-600" />
+              </div>
+
+              <div>
+                <label class="block font-medium text-slate-300 mb-1">Message</label>
+                <textarea id="formMessage" rows="4" required placeholder="Hi Suvethan, I came across your profile and would like to chat regarding..." class="w-full px-3.5 py-2.5 rounded-xl bg-surface-card border border-white/10 focus:border-brand-400 outline-none text-white transition placeholder:text-slate-600 resize-none"></textarea>
+              </div>
+
+              <button type="submit" id="btnSubmitForm" class="w-full py-3 bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white font-semibold rounded-xl transition-all shadow-lg shadow-brand-500/25 flex items-center justify-center space-x-2">
+                <i class="fa-solid fa-paper-plane text-xs"></i>
+                <span>Transmit Message</span>
+              </button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="glass-panel border-t border-white/5 py-8 mt-20 relative z-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-500">
+      <div class="flex items-center space-x-2">
+        <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+        <span class="text-slate-400">&copy; <span id="currentYear"></span> Suvethan Yogathasan</span>
+        <span>&bull;</span>
+        <span>Built with .NET Mindset &amp; Clean Web Standards</span>
+      </div>
+
+      <div class="flex items-center space-x-4">
+        <a href="#hero" class="hover:text-brand-400 transition" onclick="soundEffect('click')">Back to Top &uarr;</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- RESUME MODAL VIEWER -->
+  <div id="resumeModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="glass-panel bg-surface-card max-w-3xl w-full max-h-[90vh] rounded-2xl flex flex-col shadow-2xl border border-white/10 overflow-hidden">
+      
+      <!-- Modal Header -->
+      <div class="p-4 border-b border-white/10 flex items-center justify-between bg-surface-card">
+        <div class="flex items-center space-x-2 font-mono text-sm">
+          <i class="fa-solid fa-file-pdf text-rose-400"></i>
+          <span class="font-bold text-white">Suvethan_Yogathasan_Resume.pdf</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <button onclick="copyToClipboard(getResumePlainText(), 'Resume text copied to clipboard!')" class="px-3 py-1 bg-white/5 hover:bg-white/10 text-slate-300 rounded text-xs font-mono transition flex items-center space-x-1">
+            <i class="fa-regular fa-copy"></i>
+            <span>Copy Text</span>
+          </button>
+          <button onclick="closeModal('resumeModal')" class="text-slate-400 hover:text-white p-1">
+            <i class="fa-solid fa-xmark text-lg"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Modal Body (Resume Content) -->
+      <div class="p-6 sm:p-8 overflow-y-auto space-y-6 text-xs sm:text-sm text-slate-300 leading-relaxed font-sans">
+        
+        <div class="text-center pb-4 border-b border-white/10 space-y-1">
+          <h2 class="text-xl sm:text-2xl font-black uppercase text-white tracking-wider">Suvethan Yogathasan</h2>
+          <p class="text-xs text-slate-400">Markham, ON &bull; suvethan2004@gmail.com &bull; (647) 679-0144 &bull; linkedin.com/in/suvethan-yogathasan</p>
+        </div>
+
+        <!-- Education -->
+        <div class="space-y-2">
+          <h4 class="font-bold text-brand-400 uppercase text-xs tracking-wider border-b border-white/10 pb-1">Education</h4>
+          <div class="flex justify-between font-medium text-white">
+            <span>Bachelor of Science in Computer Science (BSc)</span>
+            <span class="font-mono text-slate-400 text-xs">Sept 2022 – Aug 2026</span>
+          </div>
+          <p class="text-slate-400">Wilfrid Laurier University &bull; Waterloo, ON</p>
+          <p class="text-[12px] text-slate-400">Relevant Coursework: Internet Computing, Data Structures &amp; Algorithms, Object-Oriented Programming, Database Systems, Software Engineering.</p>
+        </div>
+
+        <!-- Skills -->
+        <div class="space-y-2">
+          <h4 class="font-bold text-brand-400 uppercase text-xs tracking-wider border-b border-white/10 pb-1">Technical Skills</h4>
+          <p><strong>Languages:</strong> C#, Python, JavaScript, SQL, HTML, CSS, Java, C</p>
+          <p><strong>Frameworks &amp; Web:</strong> .NET Core, ASP.NET Core Razor Pages, RESTful APIs, Node.js</p>
+          <p><strong>Databases &amp; Tools:</strong> SQL Server (SSMS), Stored Procedures, Git, GitHub, Visual Studio</p>
+          <p><strong>Methodologies:</strong> Agile/Scrum sprints, Code reviews, Unit testing, Bug fixing</p>
+        </div>
+
+        <!-- Experience -->
+        <div class="space-y-4">
+          <h4 class="font-bold text-brand-400 uppercase text-xs tracking-wider border-b border-white/10 pb-1">Work Experience</h4>
+          
+          <div class="space-y-1">
+            <div class="flex justify-between font-bold text-white">
+              <span>Junior Full Stack Software Developer &mdash; Voyzant Inc.</span>
+              <span class="font-mono text-slate-400 text-xs">Oct 2026 – Present</span>
+            </div>
+            <ul class="list-disc pl-4 text-[12px] text-slate-300 space-y-1">
+              <li>Build and update web pages using ASP.NET Core Razor Pages and C# for travel agents to search, compare, and manage flight bookings.</li>
+              <li>Write backend services and REST APIs in .NET Core that connect to airline feeds (GDS), aggregators, and payment systems.</li>
+              <li>Write database queries, tables, and stored procedures in SQL Server (SSMS) to handle fare prices, markups, and commission rules.</li>
+              <li>Test code, fix booking bugs that come up in production, and take part in regular team meetings and code reviews.</li>
+            </ul>
+          </div>
+
+          <div class="space-y-1">
+            <div class="flex justify-between font-bold text-white">
+              <span>Teaching Assistant (Internet Computing) &mdash; Wilfrid Laurier University</span>
+              <span class="font-mono text-slate-400 text-xs">May 2026 – Aug 2026</span>
+            </div>
+            <ul class="list-disc pl-4 text-[12px] text-slate-300 space-y-1">
+              <li>Marked assignments, lab projects, and exams fairly based on the course rubrics and guidelines.</li>
+              <li>Answered student questions during lab hours and by email about web programming concepts, HTML, CSS, JavaScript, and class projects.</li>
+              <li>Gave constructive feedback on student code to help them spot bugs and improve their work.</li>
+            </ul>
+          </div>
+
+          <div class="space-y-1">
+            <div class="flex justify-between font-bold text-white">
+              <span>Software Development Intern &mdash; KuberMIC</span>
+              <span class="font-mono text-slate-400 text-xs">Terms: 2022 &amp; 2023</span>
+            </div>
+            <ul class="list-disc pl-4 text-[12px] text-slate-300 space-y-1">
+              <li>Designed and updated web pages using HTML, CSS, and JavaScript to match company branding.</li>
+              <li>Wrote backend code to save, process, and validate user form inputs securely.</li>
+              <li>Found and fixed bugs in existing code to make web pages load faster and work reliably.</li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- GENERIC ARCHITECTURE / PROJECT DETAILS MODAL -->
+  <div id="projectModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="glass-panel bg-surface-card max-w-xl w-full rounded-2xl flex flex-col shadow-2xl border border-white/10 overflow-hidden">
+      <div class="p-4 border-b border-white/10 flex items-center justify-between">
+        <h3 id="projModalTitle" class="font-bold text-white text-sm sm:text-base">System Details</h3>
+        <button onclick="closeModal('projectModal')" class="text-slate-400 hover:text-white p-1">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+      <div class="p-6 space-y-4 text-xs sm:text-sm text-slate-300 leading-relaxed font-sans" id="projModalBody">
+        <!-- Content injected dynamically via openProjectModal() -->
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION HUB -->
+  <div id="toastHub" class="fixed bottom-5 right-5 z-50 flex flex-col space-y-2 pointer-events-none"></div>
+
+  <!-- CLIENT-SIDE LOGIC -->
+  <script>
+    // --- State Variables ---
+    let soundEnabled = true;
+    let audioCtx = null;
+
+    // --- Year Init ---
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // --- Web Audio API Synthesizer (No external broken sound URLs) ---
+    function soundEffect(type = 'click') {
+      if (!soundEnabled) return;
+      try {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (!audioCtx) {
+          audioCtx = new AudioContext();
+        }
+        if (audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
+
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        const now = audioCtx.currentTime;
+
+        if (type === 'click') {
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(540, now);
+          osc.frequency.exponentialRampToValueAtTime(800, now + 0.04);
+          gain.gain.setValueAtTime(0.04, now);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.04);
+          osc.start(now);
+          osc.stop(now + 0.05);
+        } else if (type === 'cmd') {
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(320, now);
+          gain.gain.setValueAtTime(0.05, now);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.06);
+          osc.start(now);
+          osc.stop(now + 0.07);
+        } else if (type === 'success') {
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(440, now);
+          osc.frequency.setValueAtTime(660, now + 0.07);
+          gain.gain.setValueAtTime(0.06, now);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.15);
+          osc.start(now);
+          osc.stop(now + 0.16);
+        }
+      } catch (e) {
+        // Fallback gracefully if Web Audio is restricted
+      }
+    }
+
+    function toggleSound() {
+      soundEnabled = !soundEnabled;
+      const icon = document.getElementById('soundIcon');
+      if (soundEnabled) {
+        icon.className = 'fa-solid fa-volume-high text-xs text-brand-400';
+        triggerToast('Sound effects enabled');
+        soundEffect('success');
+      } else {
+        icon.className = 'fa-solid fa-volume-xmark text-xs text-slate-500';
+        triggerToast('Sound effects muted');
+      }
+    }
+
+    // --- Toast Notifications ---
+    function triggerToast(message) {
+      const hub = document.getElementById('toastHub');
+      const toast = document.createElement('div');
+      toast.className = "p-3.5 rounded-xl shadow-2xl text-xs font-mono bg-slate-900 border border-white/10 text-white flex items-center space-x-2 pointer-events-auto transform transition-all duration-300 translate-y-2 opacity-0";
+      toast.innerHTML = `
+        <i class="fa-solid fa-circle-check text-brand-400"></i>
+        <span>${message}</span>
+      `;
+      hub.appendChild(toast);
+
+      setTimeout(() => {
+        toast.classList.remove('translate-y-2', 'opacity-0');
+      }, 30);
+
+      setTimeout(() => {
+        toast.classList.add('opacity-0', 'translate-y-2');
+        setTimeout(() => toast.remove(), 300);
+      }, 3200);
+    }
+
+    // --- Typewriter Effect ---
+    const typewriterPhrases = [
+      "B.Sc. Computer Science Graduate",
+      "Full-Stack Developer @ Voyzant Inc.",
+      "C# & .NET Core Specialist",
+      "SQL Server & Stored Procedures",
+      "Former Laurier Internet Computing TA"
+    ];
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const typewriterEl = document.getElementById('typewriterText');
+
+    function tickTypewriter() {
+      const currentPhrase = typewriterPhrases[phraseIndex];
+      if (isDeleting) {
+        charIndex--;
+        typewriterEl.textContent = currentPhrase.substring(0, charIndex);
+      } else {
+        charIndex++;
+        typewriterEl.textContent = currentPhrase.substring(0, charIndex);
+      }
+
+      let speed = isDeleting ? 30 : 70;
+
+      if (!isDeleting && charIndex === currentPhrase.length) {
+        speed = 2000;
+        isDeleting = true;
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        phraseIndex = (phraseIndex + 1) % typewriterPhrases.length;
+        speed = 400;
+      }
+
+      setTimeout(tickTypewriter, speed);
+    }
+    tickTypewriter();
+
+    // --- Skills Matrix Filtering ---
+    function filterSkillGroup(group) {
+      soundEffect('click');
+      const tabs = document.querySelectorAll('.skill-tab-btn');
+      tabs.forEach(tab => {
+        if (tab.getAttribute('data-target') === group) {
+          tab.className = "skill-tab-btn px-3 py-1.5 rounded-lg bg-brand-600 text-white font-medium transition";
+        } else {
+          tab.className = "skill-tab-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-white transition";
+        }
+      });
+
+      const cards = document.querySelectorAll('.skill-item');
+      cards.forEach(card => {
+        if (group === 'all' || card.getAttribute('data-group') === group) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    function inspectSkill(name, details) {
+      soundEffect('click');
+      const title = document.getElementById('inspectorTitle');
+      const body = document.getElementById('inspectorBody');
+      title.textContent = `Inspector: ${name}`;
+      body.textContent = details;
+    }
+
+    // --- Modal Controls ---
+    function openModal(id) {
+      soundEffect('click');
+      const modal = document.getElementById(id);
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeModal(id) {
+      soundEffect('click');
+      const modal = document.getElementById(id);
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function toggleMobileNav() {
+      soundEffect('click');
+      const menu = document.getElementById('mobileNavMenu');
+      menu.classList.toggle('hidden');
+    }
+
+    // --- Clipboard Utility ---
+    function copyToClipboard(text, successMsg = 'Copied!') {
+      soundEffect('click');
+      const temp = document.createElement('textarea');
+      temp.value = text;
+      document.body.appendChild(temp);
+      temp.select();
+      document.execCommand('copy');
+      document.body.removeChild(temp);
+      triggerToast(successMsg);
+    }
+
+    function getResumePlainText() {
+      return `SUVETHAN YOGATHASAN
+Markham, ON | suvethan2004@gmail.com | (647) 679-0144 | linkedin.com/in/suvethan-yogathasan
+
+EDUCATION
+Wilfrid Laurier University — Bachelor of Science in Computer Science (Sept 2022 – Aug 2026)
+
+SKILLS
+Languages: C#, Python, JavaScript, SQL, HTML, CSS, Java, C
+Frameworks: .NET Core, ASP.NET Core Razor Pages, RESTful APIs, Node.js
+Databases: SQL Server (SSMS), Stored Procedures
+Tools & Process: Git, GitHub, Visual Studio, Agile/Scrum
+
+EXPERIENCE
+Voyzant Inc. — Junior Full Stack Software Developer (Oct 2026 – Present)
+- Build and update web pages using ASP.NET Core Razor Pages and C# for travel agents to search, compare, and manage flight bookings.
+- Write backend services and REST APIs in .NET Core that connect to airline feeds (GDS), aggregators, and payment systems.
+- Write database queries, tables, and stored procedures in SQL Server (SSMS) to handle fare prices, markups, and commission rules.
+
+Wilfrid Laurier University — Teaching Assistant (Internet Computing) (May 2026 – Aug 2026)
+- Marked assignments, lab projects, and exams based on rubrics.
+- Mentored students in web programming concepts, client-server models, HTML, CSS, and JavaScript.
+
+KuberMIC — Software Development Intern (2022 & 2023)
+- Designed and updated web pages using HTML, CSS, and JavaScript.
+- Wrote backend code to process and validate user form inputs securely.`;
+    }
+
+    // --- Showcase / Project Details Modal Content ---
+    const projectDetailsData = {
+      'fareEngine': {
+        title: "Travel Fare Ingestion & Commission Pipeline",
+        content: `
+          <p><strong>Overview:</strong> Developed as part of full-stack operations at Voyzant Inc., this system manages live travel fare data synchronized from multiple airline aggregators and GDS feeds.</p>
+          <div class="p-3 rounded-lg bg-black/40 border border-white/5 font-mono text-xs text-brand-300">
+            Pipeline: GDS API Feeds &rarr; .NET Core Serialization &rarr; Business Markup Logic &rarr; SQL Stored Procedures &rarr; Agent Razor Portal
+          </div>
+          <ul class="list-disc pl-4 space-y-1 text-xs">
+            <li>Ingests high volumes of pricing tables and flight availability feeds.</li>
+            <li>Executes parameterized SQL Server stored procedures calculating tiered markups and travel agency commissions dynamically.</li>
+            <li>Enforces unit testing across edge cases (currency conversions, multi-stop itineraries, code-share routes).</li>
+          </ul>
+        `
+      },
+      'labHub': {
+        title: "Internet Computing TA Sandbox",
+        content: `
+          <p><strong>Overview:</strong> A structured collection of interactive test examples and lab guides created while working as a Teaching Assistant at Wilfrid Laurier University for the Internet Computing curriculum.</p>
+          <div class="p-3 rounded-lg bg-black/40 border border-white/5 font-mono text-xs text-emerald-300">
+            Topics: HTTP Methods (GET/POST/PUT) &bull; Asynchronous Promises &bull; DOM Event Bubbling &bull; Client State
+          </div>
+          <ul class="list-disc pl-4 space-y-1 text-xs">
+            <li>Helped over 60 undergraduate students visualize network round-trips and response status codes.</li>
+            <li>Included code reviews on student submissions to demonstrate clean error handling and structured JavaScript.</li>
+          </ul>
+        `
+      },
+      'agentDesk': {
+        title: "B2B Travel Agent Booking Desk",
+        content: `
+          <p><strong>Overview:</strong> Internal web portal architecture designed for travel agents to look up real-time airline seats, configure custom markups, and finalize client ticket issues.</p>
+          <div class="p-3 rounded-lg bg-black/40 border border-white/5 font-mono text-xs text-purple-300">
+            Stack: ASP.NET Core Razor Pages &bull; C# &bull; SQL Server &bull; Responsive Layouts
+          </div>
+          <ul class="list-disc pl-4 space-y-1 text-xs">
+            <li>Server-rendered Razor Pages providing rapid page transitions and secure anti-forgery token verification.</li>
+            <li>Modular layout designed to support desktop ticketing desks and mobile tablet views.</li>
+          </ul>
+        `
+      }
+    };
+
+    function openProjectModal(key) {
+      const data = projectDetailsData[key];
+      if (!data) return;
+      document.getElementById('projModalTitle').textContent = data.title;
+      document.getElementById('projModalBody').innerHTML = data.content;
+      openModal('projectModal');
+    }
+
+    // --- Interactive Terminal Logic ---
+    const termInput = document.getElementById('terminalInput');
+    const termOutput = document.getElementById('terminalOutput');
+
+    const commands = {
+      'help': () => `
+<div class="space-y-1 text-slate-300">
+  <p><span class="text-brand-400 font-bold">about</span>          - Short overview of Suvethan</p>
+  <p><span class="text-brand-400 font-bold">skills</span>         - Print primary programming stack</p>
+  <p><span class="text-brand-400 font-bold">experience</span>     - List current and past positions</p>
+  <p><span class="text-brand-400 font-bold">cat resume.txt</span> - Print formatted resume in terminal</p>
+  <p><span class="text-brand-400 font-bold">contact</span>        - Show email, phone & LinkedIn</p>
+  <p><span class="text-brand-400 font-bold">sudo hire</span>      - Direct action prompt</p>
+  <p><span class="text-brand-400 font-bold">secret</span>         - Easter egg command</p>
+  <p><span class="text-brand-400 font-bold">clear</span>          - Clear terminal history</p>
+</div>`,
+      'about': () => `<p class="text-slate-200">Suvethan Yogathasan: Computer Science graduate from Wilfrid Laurier University & Junior Full-Stack Developer at Voyzant Inc. specializing in .NET Core, C#, Razor Pages, and SQL Server.</p>`,
+      'skills': () => `<p class="text-emerald-300">Languages: C#, Python, JavaScript (ES6+), SQL, HTML/CSS, Java<br>Frameworks: .NET Core, ASP.NET Razor Pages, REST APIs<br>Databases: SQL Server (SSMS), Stored Procedures<br>Tools: Git, GitHub, Visual Studio, Agile/Scrum</p>`,
+      'experience': () => `<div class="text-slate-300 space-y-1">
+<p><span class="text-brand-400 font-bold">Voyzant Inc.</span> &mdash; Junior Full Stack Developer (Oct 2026 – Present)</p>
+<p><span class="text-indigo-400 font-bold">Wilfrid Laurier University</span> &mdash; Teaching Assistant (May 2026 – Aug 2026)</p>
+<p><span class="text-amber-400 font-bold">KuberMIC</span> &mdash; Software Development Intern (2022 & 2023)</p>
+</div>`,
+      'cat resume.txt': () => `<div class="text-slate-300 whitespace-pre-wrap font-mono text-[11px] leading-relaxed">${getResumePlainText()}</div>`,
+      'contact': () => `<p class="text-brand-300">Email: suvethan2004@gmail.com<br>Phone: +1 (647) 679-0144<br>LinkedIn: linkedin.com/in/suvethan-yogathasan<br>Location: Markham, ON</p>`,
+      'sudo hire': () => `<p class="text-emerald-400 font-bold">PERMISSION GRANTED: Please reach out at suvethan2004@gmail.com to schedule an interview!</p>`,
+      'secret': () => `<p class="text-purple-400">✨ Easter Egg Unlocked: "First, solve the problem. Then, write the code." &bull; Built with pride in Ontario, Canada.</p>`,
+    };
+
+    function runCommand(cmdString) {
+      soundEffect('cmd');
+      const cleanCmd = cmdString.trim().toLowerCase();
+
+      // Print prompt echo
+      const echoLine = document.createElement('div');
+      echoLine.className = "flex items-center space-x-2 text-slate-400";
+      echoLine.innerHTML = `<span class="text-brand-400">$</span> <span>${cmdString}</span>`;
+      termOutput.appendChild(echoLine);
+
+      if (cleanCmd === 'clear') {
+        termOutput.innerHTML = '';
+        return;
+      }
+
+      const responseLine = document.createElement('div');
+      responseLine.className = "mt-1 mb-2";
+
+      if (commands[cleanCmd]) {
+        responseLine.innerHTML = commands[cleanCmd]();
+      } else if (cleanCmd === '') {
+        // Do nothing on empty enter
+      } else {
+        responseLine.innerHTML = `<span class="text-rose-400">zsh: command not found: ${cleanCmd}</span>. Type <span class="text-brand-300">help</span> for a list of available commands.`;
+      }
+
+      termOutput.appendChild(responseLine);
+      termOutput.scrollTop = termOutput.scrollHeight;
+    }
+
+    termInput.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        runCommand(termInput.value);
+        termInput.value = '';
+      }
+    });
+
+    function clearTerminal() {
+      soundEffect('click');
+      termOutput.innerHTML = '';
+      triggerToast('Terminal cleared');
+    }
+
+    // --- Contact Form Handling ---
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      soundEffect('success');
+
+      const name = document.getElementById('formName').value;
+      const email = document.getElementById('formEmail').value;
+      const subject = document.getElementById('formSubject').value;
+      const msg = document.getElementById('formMessage').value;
+
+      // Construct mailto link as reliable client fallback
+      const mailtoUrl = `mailto:suvethan2004@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent("From: " + name + " (" + email + ")\n\n" + msg)}`;
+      
+      triggerToast(`Thanks ${name}! Opening mail client...`);
+      setTimeout(() => {
+        window.location.href = mailtoUrl;
+      }, 600);
+
+      document.getElementById('contactForm').reset();
+    }
+
+    // --- Global Keyboard Shortcuts ---
+    window.addEventListener('keydown', function(e) {
+      // Escape closes open modals
+      if (e.key === 'Escape') {
+        closeModal('resumeModal');
+        closeModal('projectModal');
+      }
+      // Pressing 't' or 'T' when not in an input jumps to terminal
+      if ((e.key === 't' || e.key === 'T') && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+        e.preventDefault();
+        const termSec = document.getElementById('terminal');
+        termSec.scrollIntoView({ behavior: 'smooth' });
+        setTimeout(() => termInput.focus(), 400);
+      }
+    });
+  </script>
+</body>
+</html>
